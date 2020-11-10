@@ -77,7 +77,7 @@ jobs:
           mkdir -p ./artifact/buildinfo
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           ls -l ./bin/targets/
-          tar cjf ./bin/targets/OpenWrt_firmware.tar.bz2 ./bin/targets/OpenWrt_firmware
+          tar cjf $(find ./bin/targets/ -type f).tar.bz2 $(find ./bin/targets/ -type f)
           cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
           cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
