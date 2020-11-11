@@ -9,7 +9,7 @@ name: OpenWrt-CI
 
 on:
   schedule:
-    - cron: 55 10 * * *
+    - cron: 10 14 * * *
   release:
     types: [published]
 
@@ -80,7 +80,8 @@ jobs:
           cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
           cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
-          tar cjf ./artifact/firmware/OpenWrt_firmware.tar.bz2 ./artifact/firmware/OpenWrt_firmware
+          tar cjf ./artifact/firmware/openwrt-x86-64-generic-squashfs-combined.img.tar.bz2 ./artifact/firmware/openwrt-x86-64-generic-squashfs-combined.img
+          cp -rf ./artifact/firmware/openwrt-x86-64-generic-squashfs-combined.img.tar.bz2 ./artifact/firmware/
           ls -l ./artifact/firmware/
 
       - name: Deliver buildinfo
