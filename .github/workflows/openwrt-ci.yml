@@ -9,7 +9,7 @@ name: OpenWrt-CI
 
 on:
   schedule:
-    - cron: 20 01 * * *
+    - cron: 30 07 * * *
   release:
     types: [published]
 
@@ -100,7 +100,12 @@ jobs:
         with:
           name: OpenWrt_firmware
           path: ./bin/targets/
-  
+    
+      - name: Deliver zipped
+        uses: actions/upload-artifact@v2
+        with:
+          name: openwrt-x86-64-generic-squashfs-combined.img.tar.bz2
+          path: ./artifact/firmware/
 
       - name: Upload release asset
         if: github.event == 'release'
